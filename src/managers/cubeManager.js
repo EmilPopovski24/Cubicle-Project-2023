@@ -3,6 +3,7 @@ const cubes = [];
 
 exports.getAll = () => cubes.slice() //copy of array with a new reference
 
+exports.getOne = (cubeId) => cubes.find(x => x.id == cubeId);
 //cubeData = name, description, imageUrl, difficultyLevel
 exports.create = (cubeData) => {
     const newCube = {

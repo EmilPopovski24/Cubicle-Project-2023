@@ -3,7 +3,6 @@ const cubeManager = require("../managers/cubeManager");
 
 // Връщаме страницата за създаване
 router.get('/create', (req, res) => {
-    console.log("--------------------------")
     console.log(cubeManager.getAll())
     res.render('create')
 });
@@ -20,6 +19,12 @@ router.post('/create', (req, res) => {
     console.log(req.body);
     res.redirect('/')
 });
+
+router.get('/:cubeId/details', (req, res) => {
+    const cube = cubeManager.getOne(req.params.cubeId);
+    res.render('details', { cube })
+});
+
 
 
 
