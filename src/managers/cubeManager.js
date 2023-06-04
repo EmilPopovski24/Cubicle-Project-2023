@@ -16,7 +16,25 @@ const cubes = [
     }
 ];
 
-exports.getAll = () => cubes.slice() //copy of array with a new reference
+// exports.getAll = () => cubes.slice() //copy of array with a new reference
+//Search logic
+exports.getAll = (search, from, to) => {
+    let result = cubes.slice();//copy of array with a new reference
+
+    if (search) {
+        result = result.filter(cube => cube.name.toLowerCase().includes(search.toLowerCase()))
+    }
+
+    if (from) {
+        result = result.filter(cube => cube.difficultyLevel >= Number(from));
+    }
+
+    if (to) {
+        result = result.filter(cube => cube.difficultyLevel <= Number(to));
+    }
+
+    return result;
+}
 
 exports.getOne = (cubeId) => cubes.find(x => x.id == cubeId);
 //cubeData = name, description, imageUrl, difficultyLevel
