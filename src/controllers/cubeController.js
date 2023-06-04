@@ -31,7 +31,7 @@ router.get('/:cubeId/details', async(req, res) => {
 });
 
 router.get("/:cubeId/attach-accessory", (req, res) => {
-    res.render('accessory/attach')
+    res.render('accessory/attach');
 });
 
 
