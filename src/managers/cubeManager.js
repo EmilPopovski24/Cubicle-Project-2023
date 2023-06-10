@@ -1,8 +1,6 @@
 const uniqid = require('uniqid');
 const Cube = require('../models/Cube');
 
-
-
 // exports.getAll = () => cubes.slice() //copy of array with a new reference
 //Search logic
 exports.getAll = async (search, from, to) => {
@@ -26,10 +24,16 @@ exports.getAll = async (search, from, to) => {
 
 exports.getOne = (cubeId) => Cube.findById(cubeId);
 //cubeData = name, description, imageUrl, difficultyLevel
-exports.create = async (cubeData) => {
+exports.create = (cubeData) => {
     const cube = new Cube(cubeData);
 
-    await cube.save();
-
-    return cube;
+    return cube.save();
 };  
+
+exports.attachAccessory = async(cubeId, accessoryId) => {
+    // return Cube.findByIdAndUpdate(cubeId, { $push: {accessories : accessoryId}});
+
+    const cube = await Cube.findById(cubeId);
+    cube.accessories.push(accessoryId);
+    return cube.save();
+}
