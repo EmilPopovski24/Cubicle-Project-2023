@@ -2,6 +2,7 @@ const router = require('express').Router();
 const accessoryManager = require('../managers/accessoryManager');
  
 router.get("/create", (req, res) => {
+    console.log(req.user);
     res.render('accessory/create')
 });
 
