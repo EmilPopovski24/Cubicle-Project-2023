@@ -11,6 +11,10 @@ router.post('/register', async(req, res) => {
     console.log(req.body);
 
     res.redirect('/users/login')
+});
+
+router.get('/login', (req, res) => {
+    res.render('./users/login')
 })
 
 
